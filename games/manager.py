@@ -1,6 +1,8 @@
+import sys
 from typing import ClassVar
 
 from simple_term_menu import TerminalMenu
+from games.calculator_game import CalculatorGame
 
 from games.common import BaseGame
 from games.constants import NO_CHOICE, YES_CHOICE
@@ -9,12 +11,14 @@ from games.sequence import SequenceGame
 
 
 class GameManager:
-    SEQUENCE_GAME: ClassVar[str] = 'sequence'
-    CALCULATOR_GAME: ClassVar[str] = 'calculator'
+    SEQUENCE_GAME: ClassVar[str] = 'Последовательность'
+    CALCULATOR_GAME: ClassVar[str] = 'Калькулятор'
+    ODD_EVENT_GAME: ClassVar[str] = 'Чёт/НеЧёт'
+
     GAMES_CHOICES: ClassVar[list[str]] = (SEQUENCE_GAME, CALCULATOR_GAME)
     GAMES_CHOICES_MAP: ClassVar[dict] = {
         SEQUENCE_GAME: SequenceGame,
-        CALCULATOR_GAME: None,
+        CALCULATOR_GAME: CalculatorGame,
     }
     
     current_game: BaseGame = None
@@ -34,9 +38,11 @@ class GameManager:
 
     def ask_restart(self):
         choice = input(f'Начать новую игру? {YES_CHOICE}/{NO_CHOICE}')
-        
+
         if choice == YES_CHOICE:
             self.start()
+        else:
+            sys.exit()
 
     def run(self):
         assert self.current_game, 'Ни одна игра не запущена, пожалуйста выберите игру'
