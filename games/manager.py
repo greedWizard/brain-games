@@ -7,22 +7,30 @@ from games.calculator_game import CalculatorGame
 from games.common import BaseGame
 from games.constants import (
     CALCULATOR_GAME_NAME,
+    GCD_GAME_NAME,
     NO_CHOICE,
     ODD_EVEN_GAME_NAME,
     SEQUENCE_GAME_NAME,
     YES_CHOICE,
 )
 from games.exceptions import StopGameException
+from games.gcd import GCDGame
 from games.odd_even import OddEvenGame
 from games.sequence import SequenceGame
 
 
 class GameManager:
-    GAMES_CHOICES: ClassVar[list[str]] = (SEQUENCE_GAME_NAME, CALCULATOR_GAME_NAME, ODD_EVEN_GAME_NAME)
+    GAMES_CHOICES: ClassVar[list[str]] = (
+        SEQUENCE_GAME_NAME,
+        CALCULATOR_GAME_NAME,
+        ODD_EVEN_GAME_NAME,
+        GCD_GAME_NAME,
+    )
     GAMES_CHOICES_MAP: ClassVar[dict] = {
         SEQUENCE_GAME_NAME: SequenceGame,
         CALCULATOR_GAME_NAME: CalculatorGame,
         ODD_EVEN_GAME_NAME: OddEvenGame,
+        GCD_GAME_NAME: GCDGame,
     }
     
     current_GAME_NAME: BaseGame = None
