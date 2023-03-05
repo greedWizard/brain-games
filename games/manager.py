@@ -2,12 +2,18 @@ import sys
 from typing import ClassVar
 
 from simple_term_menu import TerminalMenu
-from games.calculator_GAME_NAME import CalculatorGame
+from games.calculator_game import CalculatorGame
 
 from games.common import BaseGame
-from games.constants import NO_CHOICE, YES_CHOICE
+from games.constants import (
+    CALCULATOR_GAME_NAME,
+    NO_CHOICE,
+    ODD_EVEN_GAME_NAME,
+    SEQUENCE_GAME_NAME,
+    YES_CHOICE,
+)
 from games.exceptions import StopGameException
-from games.odd_event import OddEvenGame
+from games.odd_even import OddEvenGame
 from games.sequence import SequenceGame
 
 
@@ -35,7 +41,7 @@ class GameManager:
         self.run()
 
     def ask_restart(self):
-        choice = input(f'Начать новую игру? {YES_CHOICE}/{NO_CHOICE}')
+        choice = input(f'Начать новую игру? {YES_CHOICE}/{NO_CHOICE}: ')
 
         if choice == YES_CHOICE:
             self.start()
