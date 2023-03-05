@@ -5,12 +5,11 @@ from games.mixins import GenerateMathPatternMixin
 
 class CalculatorGame(BaseGame, GenerateMathPatternMixin):
     OPERATIONS_LIST: ClassVar[list[str]] = GenerateMathPatternMixin.OPERATIONS_LIST + [
-        '**',
         '/',
     ]
-    MIN_NUMBER_IN_EXPRESSION: ClassVar[int] = 1
-    MAX_NUMBER_IN_EXPRESSION: ClassVar[int] = 10
-    SEQUENCE_OPERATIONS_COUNT: ClassVar[int] = 2
+    MIN_NUMBER_IN_EXPRESSION: ClassVar[int] = 0
+    MAX_NUMBER_IN_EXPRESSION: ClassVar[int] = 1000
+    SEQUENCE_OPERATIONS_COUNT: ClassVar[int] = 4
     
     def get_win_message(self):
         return 'Поздравляем, вы 3 раза ответили правильно!'
@@ -29,7 +28,7 @@ class CalculatorGame(BaseGame, GenerateMathPatternMixin):
             print('К сожалению ответ не правильный')
 
     def update(self):
-        print('Посчитайте выражение на экране:')
+        print('Посчитайте выражение на экране (округлите до целых):')
 
         sequence_function, sequence_str = self._generate_math_expression(
             allow_parameter=False,

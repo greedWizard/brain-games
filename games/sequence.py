@@ -29,7 +29,7 @@ class SequenceGame(BaseGame, GenerateMathPatternMixin):
         sequence_str, sequence, right_answer = self.__get_sequence_data()
 
         self.__ask_choice(right_answer, sequence, sequence_str)
-        self.__check_win()
+        self._check_win()
 
     def __get_sequence_data(self) -> tuple[str, Callable[[SupportsInt], SupportsInt], str]:
         ''' Создать новую последовательность и получить её функцию для вывода ответа и праивльный ответ '''

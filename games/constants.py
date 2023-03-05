@@ -9,3 +9,7 @@ SEQUENCE_GAME_NAME: str = 'Последовательность'
 CALCULATOR_GAME_NAME: str = 'Калькулятор'
 ODD_EVEN_GAME_NAME: str = 'Чёт/НеЧёт'
 GCD_GAME_NAME: str = 'Наибольший Общий Делитель'
+PRIME_GAME_NAME: str = 'Простое/Не простое'
+
+PRIME_CHOICE: str = 'Простое'
+NOT_PRIME_CHOICE: str = 'Не простое'

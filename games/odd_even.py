@@ -6,6 +6,7 @@ from games.constants import EVEN_CHOICE, ODD_CHOICE
 
 from simple_term_menu import TerminalMenu
 
+
 class OddEvenGame(BaseGame):
     ANSWER_CHOICES: ClassVar[list[str]] = (EVEN_CHOICE, ODD_CHOICE)
 
