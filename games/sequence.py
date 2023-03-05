@@ -2,8 +2,6 @@ from typing import Callable, ClassVar, Literal, SupportsInt
 import random
 
 from games.common import BaseGame
-from games.constants import RIGHT_ANSWERS_TO_WIN_COUNT
-from games.exceptions import StopGameException
 from games.mixins import GenerateMathPatternMixin
 
 
@@ -11,7 +9,7 @@ class SequenceGame(BaseGame, GenerateMathPatternMixin):
     ELEMENTS_IN_SEQUENCE_COUNT: ClassVar[Literal[5]] = 8
     
     def get_win_message(self):
-        return 'Поздравляем! Вы отгадали 3 правильные последовательности!'
+        return f'Поздравляем! Вы отгадали {self.wins_count} правильные последовательности!'
 
     def __ask_choice(self, right_answer: str, initial_sequence: str, sequence_function_str: str) -> None:
         print('=======================================')

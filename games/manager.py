@@ -2,38 +2,36 @@ import sys
 from typing import ClassVar
 
 from simple_term_menu import TerminalMenu
-from games.calculator_game import CalculatorGame
+from games.calculator_GAME_NAME import CalculatorGame
 
 from games.common import BaseGame
 from games.constants import NO_CHOICE, YES_CHOICE
 from games.exceptions import StopGameException
+from games.odd_event import OddEvenGame
 from games.sequence import SequenceGame
 
 
 class GameManager:
-    SEQUENCE_GAME: ClassVar[str] = 'Последовательность'
-    CALCULATOR_GAME: ClassVar[str] = 'Калькулятор'
-    ODD_EVENT_GAME: ClassVar[str] = 'Чёт/НеЧёт'
-
-    GAMES_CHOICES: ClassVar[list[str]] = (SEQUENCE_GAME, CALCULATOR_GAME)
+    GAMES_CHOICES: ClassVar[list[str]] = (SEQUENCE_GAME_NAME, CALCULATOR_GAME_NAME, ODD_EVEN_GAME_NAME)
     GAMES_CHOICES_MAP: ClassVar[dict] = {
-        SEQUENCE_GAME: SequenceGame,
-        CALCULATOR_GAME: CalculatorGame,
+        SEQUENCE_GAME_NAME: SequenceGame,
+        CALCULATOR_GAME_NAME: CalculatorGame,
+        ODD_EVEN_GAME_NAME: OddEvenGame,
     }
     
-    current_game: BaseGame = None
+    current_GAME_NAME: BaseGame = None
     
-    def change_game(self, index: int) -> BaseGame:
+    def change_GAME_NAME(self, index: int) -> BaseGame:
         assert index < len(self.GAMES_CHOICES), 'Данная игра не найдена в списке'
 
         game_key = self.GAMES_CHOICES[index]
-        self.current_game = self.GAMES_CHOICES_MAP[game_key].init()
+        self.current_GAME_NAME = self.GAMES_CHOICES_MAP[game_key].init()
 
     def start(self):
         print('Выберите игру:')
         menu = TerminalMenu(self.GAMES_CHOICES)
         game_index = menu.show()
-        self.change_game(game_index)
+        self.change_GAME_NAME(game_index)
         self.run()
 
     def ask_restart(self):
@@ -45,12 +43,12 @@ class GameManager:
             sys.exit()
 
     def run(self):
-        assert self.current_game, 'Ни одна игра не запущена, пожалуйста выберите игру'
-        self.current_game.start()
+        assert self.current_GAME_NAME, 'Ни одна игра не запущена, пожалуйста выберите игру'
+        self.current_GAME_NAME.start()
 
         while True:
             try:
-                self.current_game.update()
+                self.current_GAME_NAME.update()
             except StopGameException as error:
                 print(str(error))
                 self.ask_restart()
