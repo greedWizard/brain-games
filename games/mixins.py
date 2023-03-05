@@ -12,7 +12,7 @@ class GenerateMathPatternMixin:
     SEQUENCE_OPERATIONS_COUNT: ClassVar[Literal[2]] = 2
     MIN_NUMBER_IN_EXPRESSION: ClassVar[int] = 0
     MAX_NUMBER_IN_EXPRESSION: ClassVar[int] = 10
-    
+
     def _generate_math_expression(
         self,
         allow_parameter: bool = False,
@@ -31,8 +31,7 @@ class GenerateMathPatternMixin:
         elif allow_parameter:
             return lambda x: eval(sequence_str), sequence_str
         return lambda: eval(sequence_str), sequence_str
-        
-    
+
     def __generate_new_pattern(self, includes_var: bool = False):
         number = str(random.randint(self.MIN_NUMBER_IN_EXPRESSION, self.MAX_NUMBER_IN_EXPRESSION))
 

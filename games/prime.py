@@ -1,4 +1,3 @@
-import math
 import random
 from typing import ClassVar
 
@@ -28,9 +27,9 @@ class PrimeGame(BaseGame):
 
     def __ask_choice(self, right_answer: bool, number: int) -> None:
         print(f'Число {number} - простое или не простое?')
-        
+
         answer = self.menu.show()
-        
+
         if bool(answer) == right_answer:
             print('Вы ответили правильно!')
             self.wins_count += 1
@@ -41,6 +40,5 @@ class PrimeGame(BaseGame):
     def update(self):
         number = random.randint(self.MIN_VALUE, self.MAX_VALUE)
         right_answer = self.__check_is_simple(number)
-        
+
         self.__ask_choice(right_answer, number)
-        

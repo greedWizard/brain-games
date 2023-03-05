@@ -21,13 +21,13 @@ class GCDGame(BaseGame):
 
     def __ask_choice(self, right_answer: str, *numbers):
         answer = input(f'Наибольший общий делитель чисел {numbers}:\t')
-        
+
         if answer != right_answer:
             print(f'К сожалению вы ошиблись. Правильный ответ: {right_answer}')
         else:
             print('Это правильный ответ! Отлично!')
             self.wins_count += 1
-        
+
         self._check_win()
 
     def update(self):

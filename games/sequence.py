@@ -7,7 +7,7 @@ from games.mixins import GenerateMathPatternMixin
 
 class SequenceGame(BaseGame, GenerateMathPatternMixin):
     ELEMENTS_IN_SEQUENCE_COUNT: ClassVar[Literal[5]] = 8
-    
+
     def get_win_message(self):
         return f'Поздравляем! Вы отгадали {self.wins_count} правильные последовательности!'
 
@@ -16,7 +16,7 @@ class SequenceGame(BaseGame, GenerateMathPatternMixin):
         print('Угадайте пропущенное число в предоставленной последовательности:')
         print(initial_sequence)
         choice = input()
-        
+
         if choice != right_answer:
             print('К сожалению вы ошиблись.')
             print(f'Правильным ответом было: {right_answer}')
@@ -41,16 +41,16 @@ class SequenceGame(BaseGame, GenerateMathPatternMixin):
         sequence = ''
         missing_element_index = random.randint(0, 4)
         right_answer = ''
-        
+
         for index, _ in enumerate(range(self.ELEMENTS_IN_SEQUENCE_COUNT)):
             pattern = str(sequence_function(index))
-        
+
             if index == missing_element_index:
                 right_answer = pattern
                 pattern = '...'
-            
+
             sequence = ' '.join((sequence, pattern))
         return sequence_str, sequence, right_answer
-    
+
     def start(self) -> None:
         print('Добро пожаловать в игру угадай число в последовательности!')

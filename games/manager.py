@@ -36,9 +36,9 @@ class GameManager:
         GCD_GAME_NAME: GCDGame,
         PRIME_GAME_NAME: PrimeGame,
     }
-    
+
     current_GAME_NAME: BaseGame = None
-    
+
     def change_GAME_NAME(self, index: int) -> BaseGame:
         assert index < len(self.GAMES_CHOICES), 'Данная игра не найдена в списке'
 
